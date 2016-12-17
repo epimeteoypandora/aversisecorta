@@ -5,30 +5,6 @@ var fs = require('fs');
 class MonitorApplication{
     constructor() {}
     initialize(communications){
-                // var memwatch = require('memwatch');
-                // memwatch.on('stats', function(stats) {
-                //     console.log(JSON.tringify(stats))
-                //     // do something with post-gc memory usage stats
-                // });    
-                // memwatch.on('leak', function(info) {
-                //         console.log(JSON.tringify(info))
-                // // look at info to find out about what might be leaking
-                // });           
-
-                // var hd = new memwatch.HeapDiff();
-                // // your code here ...
-                // var diff = hd.end();
-
-        setInterval(function(){ 
-            console.log("**************SIGO VIVO memory=") 
-            //console.log("*")            
-            //console.log("**************SIGO VIVO memory="+JSON.stringify(process.memoryUsage())) 
-           // console.log("*")
-            // var stats = memwatch.gc();
-
-                
-        }, 30000);
-
 
         this.communicationLayer=communications;
         this.startTime=0;
@@ -62,7 +38,7 @@ class MonitorApplication{
 
                 break;               
             default:
-               // throw "ERROR: El método recibido no existe.";
+                throw "ERROR: El método recibido no existe.";
         }        
     }
     processResponse(type,data){
@@ -75,7 +51,7 @@ class MonitorApplication{
                 //NOTHING
                 break;                  
             default:
-               // throw "ERROR: El método recibido no existe.";
+                throw "ERROR: El método recibido no existe.";
         }          
     }
     processConnect(callback){
@@ -91,106 +67,7 @@ class MonitorApplication{
     }
 
 
-   run(){
-        if (this.running){      
-            if (!this.algorithm.hasFinished()){
-//                 var data=null;        
-//                 var idNode=null;
-//                 var nextReplacement=null;
-//                 var replacementsToDo=null;
-//                 idNode=this.communicationLayer.getFreeNodeId();
-//                 //console.log("********idNode="+idNode)
-//                 if (idNode || idNode===0){
-//                    // while (idNode || idNode===0){
-//                         replacementsToDo=[];
-//                         data = {};
-//                         data[Common.Constants.ParameterTypes.REPLACEMENTS]=replacementsToDo;
-//                         data[Common.Constants.ParameterTypes.TASK_TYPE]=Common.Constants.MessageTypes.NEXT_STEP;
-//                         data[Common.Constants.ParameterTypes.ALGORITHM_TYPE]=Common.Constants.AlgorithmTypes.CVRP;//TODO -> Creo que no es necesario
-//                         this.communicationLayer.sendTo(Common.Constants.MessageTypes.NEXT_STEP, data, idNode);
-//                         this.slaveLastReplacement[idNode]=nextReplacement+replacementsToDo.length; 
-
-//                         //idNode=this.communicationLayer.getFreeNodeId();
-
-//                  //   }
-// //...                   console.log("FIN WHILE")
-//                 } else {   //EJECUCIÓN LOCAL
-                           
-//                         //LOCAL
-//                 }               
-                
-                setImmediate(    ()=>{
-                    this.run();
-                });
-            } else {  //HAS FINISHED
-                    console.log("!!!!!!!!!!!!!!!ENDDDDDD!!!!!!!!!!!!!!")
-                  this.end();                       
-            } //has finished   
-        }  else { //running
-            console.log("!!!!!!!!!!!!!!!NORUNNING!!!!!!!!!!!!!!")
-            ///TODO-> no deberían estar aquí
-        }            
-    }
-
-
-
-    run3(){
-        if (this.running){      
-            if (!this.algorithm.hasFinished()){
-                            
-                var data=null;        
-                var idNode=null;
-                var nextReplacement=null;
-                var replacementsToDo=null;
-                idNode=this.communicationLayer.getFreeNodeId();
-
-                if (idNode || idNode===0){
-                    while (idNode || idNode===0){
-  
-                        nextReplacement=this.slaveLastReplacement[idNode];
-
-                        if (nextReplacement==null){
-                            this.slaveLastReplacement[idNode]=0;
-                            nextReplacement=0;
-                        }
-                        replacementsToDo=this.replacements.slice(nextReplacement,this.replacements.length);
-
-                        data = {};
-                        data[Common.Constants.ParameterTypes.REPLACEMENTS]=replacementsToDo;
-                        data[Common.Constants.ParameterTypes.TASK_TYPE]=Common.Constants.MessageTypes.NEXT_STEP;
-                        data[Common.Constants.ParameterTypes.ALGORITHM_TYPE]=Common.Constants.AlgorithmTypes.CVRP;//TODO -> Creo que no es necesario
-                        this.communicationLayer.sendTo(Common.Constants.MessageTypes.NEXT_STEP, data, idNode);
-
-                        this.slaveLastReplacement[idNode]=nextReplacement+replacementsToDo.length; 
-                        idNode=this.communicationLayer.getFreeNodeId();
-                    }
-//...                   console.log("FIN WHILE")
-                } else {   //EJECUCIÓN LOCAL
-                           
-                        //LOCAL
-//                        this.algorithm.runCallback((son)=>{
-//                            var posReplacement=  this.algorithm.replaceWorst(son);
-//                            if (posReplacement!=-1){           
-//                                this.replacements.push({"indiv":son,"pos": posReplacement});
-//                            }                               
-//                        });  
-                }               
-                
-                setImmediate(    ()=>{
-                    this.run();
-                });
-            } else {  //HAS FINISHED
-                  this.end();                       
-            } //has finished   
-        }  else { //running
-            ///TODO-> no deberían estar aquí
-        }            
-    }
-
-
-
-
-    run2(){
+    run(){
         if (this.running){      
             if (!this.algorithm.hasFinished()){
            	            	
@@ -311,29 +188,29 @@ class MonitorApplication{
         return this.dataAlgorithm;        
     }
     processTaskResult(data){
-    //     if (this.running && this.algorithm){
-    // //        console.log(this.algorithm.step+" REEMPLAZAMOS DESDE NODO ESCLAVO")
-    //         data = Common.Elements.Individual.fromJSON(data);
-    //         //AKY
-    // //        this.algorithm.replaceWorst(data);
-    //         var posReplacement=  this.algorithm.replaceWorst(data);
-    //         if (posReplacement!=-1){           
-    //                 this.replacements.push({"indiv":data,"pos": posReplacement});
-    //                 this.replacementsFromSlaves++;
-    //                 console.log("REEMPLAZO DESDE ESCLAVO");
-    //                 console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
-    //                 console.log("this.replacements.length="+this.replacements.length)
+        if (this.running && this.algorithm){
+    //        console.log(this.algorithm.step+" REEMPLAZAMOS DESDE NODO ESCLAVO")
+            data = Common.Elements.Individual.fromJSON(data);
+            //AKY
+    //        this.algorithm.replaceWorst(data);
+            var posReplacement=  this.algorithm.replaceWorst(data);
+            if (posReplacement!=-1){           
+                    this.replacements.push({"indiv":data,"pos": posReplacement});
+                    this.replacementsFromSlaves++;
+                    console.log("REEMPLAZO DESDE ESCLAVO");
+                    console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
+                    console.log("this.replacements.length="+this.replacements.length)
 
-    //                 //TODO -> AÑADIDO POR SI ACASO ESTO ES LO QUE DA EL ERROR
-    //                 if (this.replacementsFromSlaves>10){
-    //                     this.replacements=[];
-    //                     this.replacementsFromSlaves=0;
-    //                     this.slaveLastReplacement={};                        
-    //                 }
-    //                 //TODO
-    // //    		console.log(" REEMPLAZO REALIZADO2 "+this.replacements.length)                
-    //         }              
-    //     }        
+                    //TODO -> AÑADIDO POR SI ACASO ESTO ES LO QUE DA EL ERROR
+                    if (this.replacementsFromSlaves>10){
+                        this.replacements=[];
+                        this.replacementsFromSlaves=0;
+                        this.slaveLastReplacement={};                        
+                    }
+                    //TODO
+    //    		console.log(" REEMPLAZO REALIZADO2 "+this.replacements.length)                
+            }              
+        }        
     }
     processStart(data){
         console.log("processStart(data){")
@@ -453,7 +330,7 @@ class MonitorApplication{
 //            problem.targetFitness=-50000000; //500
 //              problem.targetFitness=-45000000; //500 más lento
 //              problem.targetFitness=-40000000; //500 más lento              
-              problem.targetFitness=3000; //200
+              problem.targetFitness=-3000; //200
 
 
             var nTrucks = jsonProblem.nTrucks;

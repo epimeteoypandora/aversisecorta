@@ -9,7 +9,27 @@ class WebSocketClient  extends WebSocketDefault{
             
             socket.on('message', (msg)=>{
                 this.receive(msg);
-            });     
+            }); 
+
+
+
+                //ESTO LO HE AÑADIDO LUEGO 17-12-2016
+                 socket.on('disconnect', function(msg){
+                                alert("SOCKET DISCONNECTED!"+msg); 
+                                alert(JSON.stringify(msg)); 
+
+
+                 });
+                 
+
+                  socket.on('close', function(evt){
+                      alert("Socket.IO close -> "+evt);
+                  });  
+                  socket.on('error', function(evt){
+                      alert("Socket.IO errror -> "+evt);
+                  })   
+                //ESTO LO HE AÑADIDO LUEGO 17-12-2016
+                                               
             // socket.on('error', (err)=>{
                 // alert("ERROR CON EL SERVIDOR SOCKET.IO EN EL CLIENTE"+err)
                 // throw "ERROR CON EL SERVIDOR SOCKET.IO EN EL CLIENTE"+err;
