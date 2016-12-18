@@ -305,14 +305,22 @@ var random2 = null;
 
 var max=20;
 
+
 var arrayCustomers = [];
-var random1 = null;
-var random2 = null;
-for (var i=0;i<totalElements;i++){
-    random1=Math.floor((Math.random()*max)+1);
-    random2=Math.floor((Math.random()*max)+1);    
-    arrayCustomers.push( new Common.Elements.Customer(random1,random2) );
+for (var i=0;i<totalElements;i++){  
+    arrayCustomers.push( new Common.Elements.Customer(solomon.elementos[i+1].items,0) );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
