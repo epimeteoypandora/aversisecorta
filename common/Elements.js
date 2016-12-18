@@ -18,7 +18,7 @@ module.exports = {
   MonitorCommunication:require("../layers/communication/MonitorCommunication"),
   SlaveCommunication:require("../layers/communication/SlaveCommunication"),
   
-  WebSocketServer:require("../layers/transmission/websockets/WebSocketServer"),  
+  //WebSocketServer:require("../layers/transmission/websockets/WebSocketServer"),  
   WebSocketClient:require("../layers/transmission/websockets/WebSocketClient"),
   WebSocketDefault:require("../layers/transmission/websockets/WebSocketDefault")  
 };
