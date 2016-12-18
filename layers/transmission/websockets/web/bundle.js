@@ -1487,7 +1487,7 @@ module.exports = {
   ProccessingTypes:require("./ProccessingTypes"),
   MessageTypes:require("./MessageTypes"),
   ParameterTypes:require("./ParameterTypes"),
-  FileName:"dataProb_t150a_100.txt",
+  FileName:"dataProb_t150a_50.txt",
   Index:"index.html",  
   IndexFromFile:"index2.html",    
   FromFile:false    
@@ -2963,9 +2963,9 @@ class Population{
      //   if (indiv.getFitness()>this.pop[this.worstp].getFitness()){
            this.pop[this.worstp] = indiv; 
            return this.worstp;
-    //    } else {
-    //        return -1;
-    //    }        
+      //  } else {
+       //     return -1;
+       // }        
     }   
     replace(indiv,position){//Este método se utiliza sólo cuando Monitor-Esclavo para que el esclavo pueda reemplazar
         this.pop[position] = indiv;         
