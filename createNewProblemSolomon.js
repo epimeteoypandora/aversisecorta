@@ -283,7 +283,7 @@ var popSize1 = 50;
 var popSize2 = 100;
 var popSize3 = 150;
 
-var nTrucks = 15;
+var nTrucks = 10;
 var truckCapacity=550;
 var truckTime = 650;
 var penalCap = 1000;
