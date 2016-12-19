@@ -278,7 +278,6 @@ for (var i=0;i<241;i++){
 
 
 
-
 var maxSteps=50;
 var popSize1 = 50;
 var popSize2 = 100;
