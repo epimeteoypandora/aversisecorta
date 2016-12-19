@@ -13,12 +13,12 @@ class WebSocketDefault  {
      
     sendTo(message,socket){        
         var messageString = JSON.stringify(message);   
-        console.log("MENSAJE ENVIADO: "+messageString);
+       // console.log("MENSAJE ENVIADO: "+messageString);
         socket.emit('message', messageString); 	
     }      
     
     receive(message){
-        console.log("MENSAJE RECIBIDO= "+message);
+      //  console.log("MENSAJE RECIBIDO= "+message);
         message=JSON.parse(message);
         message=Common.Elements.Message.fromJSON(message);     
         if (message.getId()<0){ //Si el ID es menor que cero entonces son respuestas.

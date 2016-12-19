@@ -104,7 +104,8 @@ class Population{
                 } 
 
 	if (this.bestf>antiguoFitness){
-		console.log(this.iteration+"-NUEVO FITNESS "+this.bestf)            
+		console.log(this.iteration+"-NUEVO FITNESS "+this.bestf)   
+        console.log(JSON.stringify(this.getIndividual(this.bestp)))         
 	}
 
 	this.iteration++;          
