@@ -1407,7 +1407,7 @@ module.exports = {
   MonitorCommunication:require("../layers/communication/MonitorCommunication"),
   SlaveCommunication:require("../layers/communication/SlaveCommunication"),
   
- // WebSocketServer:require("../layers/transmission/websockets/WebSocketServer"),  
+  //WebSocketServer:require("../layers/transmission/websockets/WebSocketServer"),  
   WebSocketClient:require("../layers/transmission/websockets/WebSocketClient"),
   WebSocketDefault:require("../layers/transmission/websockets/WebSocketDefault")  
 };
@@ -1786,9 +1786,9 @@ class MonitorApplication{
             if (posReplacement!=-1){           
                     this.replacements.push({"indiv":data,"pos": posReplacement});
                     this.replacementsFromSlaves++;
-                    console.log("REEMPLAZO DESDE ESCLAVO");
-                    console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
-                    console.log("this.replacements.length="+this.replacements.length)
+                   // console.log("REEMPLAZO DESDE ESCLAVO");
+                   // console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
+                   // console.log("this.replacements.length="+this.replacements.length)
 
                     //TODO -> AÑADIDO POR SI ACASO ESTO ES LO QUE DA EL ERROR
                     if (this.replacementsFromSlaves>10){
@@ -1919,7 +1919,7 @@ class MonitorApplication{
 //            problem.targetFitness=-50000000; //500
 //              problem.targetFitness=-45000000; //500 más lento
 //              problem.targetFitness=-40000000; //500 más lento              
-              problem.targetFitness=-3000; //200
+              problem.targetFitness=-500; //200
 
 
             var nTrucks = jsonProblem.nTrucks;
@@ -1936,7 +1936,7 @@ class MonitorApplication{
 //            console.log("###"+JSON.stringify(LSProb))            
             
 //            var maxSteps = jsonProblem.maxSteps;
-            var maxSteps = 999999;            
+            var maxSteps = 999999999;            
             
 //            console.log("###"+JSON.stringify(maxSteps))            
             console.log("vamos a cargar poblacion")
@@ -2681,7 +2681,7 @@ class WebSocketDefault  {
     }      
     
     receive(message){
-      //  console.log("MENSAJE RECIBIDO= "+message);
+        console.log("MENSAJE RECIBIDO= "+message);
         message=JSON.parse(message);
         message=Common.Elements.Message.fromJSON(message);     
         if (message.getId()<0){ //Si el ID es menor que cero entonces son respuestas.
@@ -2960,12 +2960,12 @@ class Population{
         if (indiv.getChromosome().alleles.length==0) throw "ERROR no debería ser cero"
         //TODO
         //Comprobar si el que se inserta es mejor que el peor ¿comprobarlo fuera o dentro?         
-        if (indiv.getFitness()>this.pop[this.worstp].getFitness()){
+      //  if (indiv.getFitness()>this.pop[this.worstp].getFitness()){
            this.pop[this.worstp] = indiv; 
            return this.worstp;
-        } else {
-            return -1;
-        }        
+      //  } else {
+      //      return -1;
+      //  }        
     }   
     replace(indiv,position){//Este método se utiliza sólo cuando Monitor-Esclavo para que el esclavo pueda reemplazar
         this.pop[position] = indiv;         
