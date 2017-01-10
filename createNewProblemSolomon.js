@@ -107,7 +107,7 @@ function saveProblemPopulation(popSize,callback){
     problemData["problem"]=problem;
     
     var algorithm = new Common.Elements.AlgorithmCVRP(problem, probCross,probMut,probLS, maxSteps);
-    algorithm.initialize(popSize,arrayCustomers.length+nTrucks);    
+    algorithm.initialize(popSize,arrayCustomers.length+nTrucks-1);    
 
     var population = algorithm.getPopulation()    
     problemData["population"]=population;
