@@ -1407,7 +1407,7 @@ module.exports = {
   MonitorCommunication:require("../layers/communication/MonitorCommunication"),
   SlaveCommunication:require("../layers/communication/SlaveCommunication"),
   
-  //WebSocketServer:require("../layers/transmission/websockets/WebSocketServer"),  
+ // WebSocketServer:require("../layers/transmission/websockets/WebSocketServer"),  
   WebSocketClient:require("../layers/transmission/websockets/WebSocketClient"),
   WebSocketDefault:require("../layers/transmission/websockets/WebSocketDefault")  
 };
@@ -1487,7 +1487,7 @@ module.exports = {
   ProccessingTypes:require("./ProccessingTypes"),
   MessageTypes:require("./MessageTypes"),
   ParameterTypes:require("./ParameterTypes"),
-  FileName:"dataProbSolomon_240_50.txt",
+  FileName:"dataProbSolomon_50_50.txt",
   Index:"index.html",  
   IndexFromFile:"index2.html",    
   FromFile:false    
@@ -2676,12 +2676,12 @@ class WebSocketDefault  {
      
     sendTo(message,socket){        
         var messageString = JSON.stringify(message);   
-        console.log("MENSAJE ENVIADO: "+messageString);
+       // console.log("MENSAJE ENVIADO: "+messageString);
         socket.emit('message', messageString); 	
     }      
     
     receive(message){
-        console.log("MENSAJE RECIBIDO= "+message);
+      //  console.log("MENSAJE RECIBIDO= "+message);
         message=JSON.parse(message);
         message=Common.Elements.Message.fromJSON(message);     
         if (message.getId()<0){ //Si el ID es menor que cero entonces son respuestas.
@@ -3012,7 +3012,8 @@ class Population{
                 } 
 
 	if (this.bestf>antiguoFitness){
-		console.log(this.iteration+"-NUEVO FITNESS "+this.bestf)            
+		console.log(this.iteration+"-NUEVO FITNESS "+this.bestf)   
+        console.log(JSON.stringify(this.getIndividual(this.bestp)))         
 	}
 
 	this.iteration++;          
