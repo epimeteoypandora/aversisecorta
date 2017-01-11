@@ -319,6 +319,7 @@ class MonitorApplication{
             console.log("semilla utilizada="+Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
             Math.random=seed;     
             Common.Maths.LAST_SEED=Common.Maths.LAST_SEED+1;
+            if (Common.Maths.LAST_SEED>=Common.Maths.SEEDS.length)Common.Maths.LAST_SEED=0;
 
             
             jsonProblem=JSON.parse(jsonProblem);
