@@ -314,7 +314,12 @@ class MonitorApplication{
             }         
             
 //            var seed = Common.Maths.createSeed(141650939);
-//            Math.random=seed;               
+//            Math.random=seed;       
+            var seed = Common.Maths.createSeed(Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
+            console.log("semilla utilizada="+Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
+            Math.random=seed;     
+            Common.Maths.LAST_SEED=Common.Maths.LAST_SEED+1;
+
             
             jsonProblem=JSON.parse(jsonProblem);
                  
@@ -330,7 +335,7 @@ class MonitorApplication{
 //            problem.targetFitness=-50000000; //500
 //              problem.targetFitness=-45000000; //500 más lento
 //              problem.targetFitness=-40000000; //500 más lento              
-              problem.targetFitness=-575; //200
+              problem.targetFitness=-580; //200
 
 
             var nTrucks = jsonProblem.nTrucks;
