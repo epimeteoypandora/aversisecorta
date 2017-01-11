@@ -197,8 +197,8 @@ class MonitorApplication{
             if (posReplacement!=-1){           
                     this.replacements.push({"indiv":data,"pos": posReplacement});
                     this.replacementsFromSlaves++;
-                   // console.log("REEMPLAZO DESDE ESCLAVO");
-                   // console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
+                    console.log("REEMPLAZO DESDE ESCLAVO");
+                    console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
                    // console.log("this.replacements.length="+this.replacements.length)
 
                     //TODO -> AÑADIDO POR SI ACASO ESTO ES LO QUE DA EL ERROR
