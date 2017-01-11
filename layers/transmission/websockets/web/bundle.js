@@ -1439,7 +1439,9 @@ module.exports = {
 //            console.log("random seed")
             s = Math.sin(s) * 10000; return s - Math.floor(s);
         };
-    }
+    },
+    SEEDS: [62011,80177,91591,97213,108499,113453,117797,122393,129589,136621,141223,143629,148609,155657,157933,162907,167801,172619,177467,184649,189407,199039,204047,208843,213589,221077,225949,230729,238417,250727,257893,260111],
+    LAST_SEED:0
 };
 
 },{}],16:[function(require,module,exports){
@@ -1786,8 +1788,8 @@ class MonitorApplication{
             if (posReplacement!=-1){           
                     this.replacements.push({"indiv":data,"pos": posReplacement});
                     this.replacementsFromSlaves++;
-                   // console.log("REEMPLAZO DESDE ESCLAVO");
-                   // console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
+                    console.log("REEMPLAZO DESDE ESCLAVO");
+                    console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
                    // console.log("this.replacements.length="+this.replacements.length)
 
                     //TODO -> AÑADIDO POR SI ACASO ESTO ES LO QUE DA EL ERROR
@@ -1903,7 +1905,13 @@ class MonitorApplication{
             }         
             
 //            var seed = Common.Maths.createSeed(141650939);
-//            Math.random=seed;               
+//            Math.random=seed;       
+            var seed = Common.Maths.createSeed(Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
+            console.log("semilla utilizada="+Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
+            Math.random=seed;     
+            Common.Maths.LAST_SEED=Common.Maths.LAST_SEED+1;
+            if (Common.Maths.LAST_SEED>=Common.Maths.SEEDS.length)Common.Maths.LAST_SEED=0;
+
             
             jsonProblem=JSON.parse(jsonProblem);
                  
@@ -1919,7 +1927,7 @@ class MonitorApplication{
 //            problem.targetFitness=-50000000; //500
 //              problem.targetFitness=-45000000; //500 más lento
 //              problem.targetFitness=-40000000; //500 más lento              
-              problem.targetFitness=-500; //200
+              problem.targetFitness=-580; //200
 
 
             var nTrucks = jsonProblem.nTrucks;
@@ -2182,6 +2190,12 @@ class SlaveApplication{
             
 //            var seed = Common.Maths.createSeed(141650939);
 //            Math.random=seed;              
+            var seed = Common.Maths.createSeed(Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
+            console.log("semilla utilizada="+Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
+            Math.random=seed;     
+            Common.Maths.LAST_SEED=Common.Maths.LAST_SEED+1;
+            if (Common.Maths.LAST_SEED>=Common.Maths.SEEDS.length)Common.Maths.LAST_SEED=0;
+            
             
             Common.setAlgorithm(Common.Constants.AlgorithmTypes.CVRP);
 
@@ -2681,7 +2695,7 @@ class WebSocketDefault  {
     }      
     
     receive(message){
-        console.log("MENSAJE RECIBIDO= "+message);
+        //console.log("MENSAJE RECIBIDO= "+message);
         message=JSON.parse(message);
         message=Common.Elements.Message.fromJSON(message);     
         if (message.getId()<0){ //Si el ID es menor que cero entonces son respuestas.
