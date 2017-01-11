@@ -7,6 +7,7 @@ class MonitorApplication{
     initialize(communications){
 
         this.communicationLayer=communications;
+        this.maxTime=120000;
         this.startTime=0;
         this.finalTime=0;
         this.algorithm=null;
@@ -73,7 +74,10 @@ class MonitorApplication{
     getCommunicationLayer(){
        return this.communicationLayer;        
     }
-
+    checkMaxTime(){
+        var fTime=new Date().getTime();
+        if  (fTime-this.startTime>this.maxTime) this.end();
+    }
 
     run(){
         if (this.running){      
@@ -107,6 +111,8 @@ class MonitorApplication{
                         this.slaveLastReplacement[idNode]=nextReplacement+replacementsToDo.length; 
 
                         idNode=this.communicationLayer.getFreeNodeId();
+
+                        this.checkMaxTime();
                     }
 //...                	console.log("FIN WHILE")
                 } else {   //EJECUCIÓN LOCAL
@@ -217,7 +223,8 @@ class MonitorApplication{
                     }
                     //TODO
     //    		console.log(" REEMPLAZO REALIZADO2 "+this.replacements.length)                
-            }              
+            }    
+            this.checkMaxTime();          
         }        
     }
     processStart(data){
@@ -344,7 +351,7 @@ class MonitorApplication{
 //            problem.targetFitness=-50000000; //500
 //              problem.targetFitness=-45000000; //500 más lento
 //              problem.targetFitness=-40000000; //500 más lento              
-              problem.targetFitness=-600; //200
+              problem.targetFitness=-550; //200
 
 
             var nTrucks = jsonProblem.nTrucks;
