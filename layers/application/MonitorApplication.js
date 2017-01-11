@@ -344,7 +344,7 @@ class MonitorApplication{
 //            problem.targetFitness=-50000000; //500
 //              problem.targetFitness=-45000000; //500 más lento
 //              problem.targetFitness=-40000000; //500 más lento              
-              problem.targetFitness=-580; //200
+              problem.targetFitness=-600; //200
 
 
             var nTrucks = jsonProblem.nTrucks;
@@ -361,7 +361,7 @@ class MonitorApplication{
 //            console.log("###"+JSON.stringify(LSProb))            
             
 //            var maxSteps = jsonProblem.maxSteps;
-            var maxSteps = 999999999;            
+            var maxSteps = 999999999;
             
 //            console.log("###"+JSON.stringify(maxSteps))            
             console.log("vamos a cargar poblacion")
