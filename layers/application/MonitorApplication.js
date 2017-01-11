@@ -23,6 +23,13 @@ class MonitorApplication{
         this.problemsSolved=0;
 //        this.problemsSolvedLog="";
         this.problemsSolvedArray=[];        
+
+
+        setInterval(function(){ 
+            console.log("Interval")
+            console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
+        }, 10000);
+
     }
     
     processRequest(type,data){
@@ -197,8 +204,8 @@ class MonitorApplication{
             if (posReplacement!=-1){           
                     this.replacements.push({"indiv":data,"pos": posReplacement});
                     this.replacementsFromSlaves++;
-                    console.log("REEMPLAZO DESDE ESCLAVO");
-                    console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
+                   // console.log("REEMPLAZO DESDE ESCLAVO");
+                   // console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
                    // console.log("this.replacements.length="+this.replacements.length)
 
                     //TODO -> AÑADIDO POR SI ACASO ESTO ES LO QUE DA EL ERROR
