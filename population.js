@@ -65,6 +65,10 @@ class Population{
     getBestIndividual(){
         return this.pop[this.bestp];        
     }
+    showBestFitness(){
+        console.log(this.iteration+"-BEST FITNESS "+this.bestf)   
+        console.log(JSON.stringify(this.getIndividual(this.bestp)))         
+    }
     computeStats(){
 
                 var borrarBESTBEFORE=this.bestf;

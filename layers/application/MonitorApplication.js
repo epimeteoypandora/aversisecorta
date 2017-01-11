@@ -25,9 +25,10 @@ class MonitorApplication{
         this.problemsSolvedArray=[];        
 
 
-        setInterval(function(){ 
+        setInterval(=>(){ 
             console.log("Interval")
             console.log("this.replacementsFromSlaves="+this.replacementsFromSlaves)
+            if (this.algorithm && this.algorithm.getPopulation())this.algorithm.getPopulation()showBestFitness();
         }, 10000);
 
     }
