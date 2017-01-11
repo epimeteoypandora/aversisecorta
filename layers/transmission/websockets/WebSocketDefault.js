@@ -18,7 +18,7 @@ class WebSocketDefault  {
     }      
     
     receive(message){
-        console.log("MENSAJE RECIBIDO= "+message);
+        //console.log("MENSAJE RECIBIDO= "+message);
         message=JSON.parse(message);
         message=Common.Elements.Message.fromJSON(message);     
         if (message.getId()<0){ //Si el ID es menor que cero entonces son respuestas.
