@@ -7,7 +7,7 @@ class MonitorApplication{
     initialize(communications){
 
         this.communicationLayer=communications;
-        this.maxTime=200000;
+        this.maxTime=300000;
         this.startTime=0;
         this.finalTime=0;
         this.algorithm=null;
@@ -351,7 +351,7 @@ class MonitorApplication{
 //            problem.targetFitness=-50000000; //500
 //              problem.targetFitness=-45000000; //500 más lento
 //              problem.targetFitness=-40000000; //500 más lento              
-              problem.targetFitness=-620; //200
+              problem.targetFitness=-650; //200
 
 
             var nTrucks = jsonProblem.nTrucks;
