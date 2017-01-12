@@ -7,7 +7,7 @@ class MonitorApplication{
     initialize(communications){
 
         this.communicationLayer=communications;
-        this.maxTime=120000;
+        this.maxTime=200000;
         this.startTime=0;
         this.finalTime=0;
         this.algorithm=null;
