@@ -1598,7 +1598,7 @@ class MonitorApplication{
     initialize(communications){
 
         this.communicationLayer=communications;
-        this.maxTime=300000;
+        this.maxTime=500000;
         this.startTime=0;
         this.finalTime=0;
         this.algorithm=null;
@@ -2204,12 +2204,14 @@ class SlaveApplication{
         $.getJSON(file, function( jsonProblem ) {     
             
 //            var seed = Common.Maths.createSeed(141650939);
-//            Math.random=seed;              
+//            Math.random=seed;    
+
+            Common.Maths.LAST_SEED=Math.floor(Math.random() * Common.Maths.SEEDS.length);
             var seed = Common.Maths.createSeed(Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
             console.log("semilla utilizada="+Common.Maths.SEEDS[Common.Maths.LAST_SEED]);
-            Math.random=seed;     
-            Common.Maths.LAST_SEED=Common.Maths.LAST_SEED+1;
-            if (Common.Maths.LAST_SEED>=Common.Maths.SEEDS.length)Common.Maths.LAST_SEED=0;
+            //Math.random=seed;     
+            //Common.Maths.LAST_SEED=Common.Maths.LAST_SEED+1;
+            //if (Common.Maths.LAST_SEED>=Common.Maths.SEEDS.length)Common.Maths.LAST_SEED=0;
             
             
             Common.setAlgorithm(Common.Constants.AlgorithmTypes.CVRP);
