@@ -21,7 +21,7 @@ class MonitorApplication{
         this.replacementsFromSlaves=0;
         
         
-        this.problemsSolved=15;
+        this.problemsSolved=0;
 //        this.problemsSolvedLog="";
         this.problemsSolvedArray=[];        
 
