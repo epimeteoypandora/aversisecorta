@@ -1441,7 +1441,7 @@ module.exports = {
         };
     },
     SEEDS: [62011,80177,91591,97213,108499,113453,117797,122393,129589,136621,141223,143629,148609,155657,157933,162907,167801,172619,177467,184649,189407,199039,204047,208843,213589,221077,225949,230729,238417,250727,257893,260111],
-    LAST_SEED:15
+    LAST_SEED:0
 };
 
 },{}],16:[function(require,module,exports){
@@ -1612,7 +1612,7 @@ class MonitorApplication{
         this.replacementsFromSlaves=0;
         
         
-        this.problemsSolved=15;
+        this.problemsSolved=0;
 //        this.problemsSolvedLog="";
         this.problemsSolvedArray=[];        
 
